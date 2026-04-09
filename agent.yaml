@@ -1,12 +1,12 @@
 spec_version: "0.1.0"
 name: clawless-deployer
 version: 1.0.0
-description: "The first gitagent built natively for ClawLess — optimizes, validates, and deploys agents to the browser-based WebContainer runtime with zero infrastructure"
+description: "A gitagent built for ClawLess — optimizes, validates, and deploys agents to the browser-based WebContainer runtime with zero infrastructure"
 model:
   preferred: claude-sonnet-4-5-20250929
   fallback:
     - gpt-4o
-    - gemini-2.0-flash
+    - gemini-2.5-flash
 skills:
   - webcontainer-optimizer
   - bundle-analyzer

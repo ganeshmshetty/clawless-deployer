@@ -1,6 +1,6 @@
 # ⚡ clawless-deployer
 
-> **The first gitagent built natively for the ClawLess browser runtime.**
+> A gitagent built for the ClawLess browser runtime.
 
 [![gitagent validate](https://img.shields.io/badge/gitagent-validated-brightgreen)](https://gitagent.sh)
 [![ClawLess](https://img.shields.io/badge/runs%20on-ClawLess-6c63ff)](https://clawless.io)
@@ -147,15 +147,9 @@ Total bundle: ~21 KB (well under the 2 MB limit).
 
 ---
 
-## Why This Is Unbuilt
+## Why ClawLess
 
-The hackathon explicitly lists ClawLess as a deployment target. Zero submissions build for it natively.
-
-This is the only submission that:
-- Understands WebContainer API constraints at the code level
-- Can transform arbitrary gitagents to be ClawLess-compatible  
-- Generates zero-install browser demos for judging
-- Works offline when WebContainers are unavailable
+ClawLess is the most accessible deployment path for gitagents — no infrastructure, no signup, just a browser tab. This agent helps you actually get there by handling the WebContainer-specific constraints that trip up most agent code.
 
 ---
 
