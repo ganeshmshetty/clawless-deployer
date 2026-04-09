@@ -1,0 +1,83 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    name: gitagent validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Validate gitagent
+        run: npx @open-gitagent/gitagent validate
+
+  analyze:
+    name: ClawLess compatibility check
+    runs-on: ubuntu-latest
+    needs: validate
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run bundle analyzer (JSON)
+        run: node skills/bundle-analyzer/analyze.js . --json > analysis.json || true
+
+      - name: Print analysis summary
+        run: |
+          echo "### ClawLess Compatibility Report" >> $GITHUB_STEP_SUMMARY
+          node skills/bundle-analyzer/analyze.js . >> $GITHUB_STEP_SUMMARY || true
+
+      - name: Upload analysis artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: clawless-analysis
+          path: analysis.json
+
+  build-preview:
+    name: Build ClawLess preview
+    runs-on: ubuntu-latest
+    needs: validate
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Build browser preview
+        run: |
+          node skills/live-preview-builder/build-preview.js . \
+            --repo-url https://github.com/${{ github.repository }}
+
+      - name: Build offline fallback
+        run: node skills/offline-fallback/build-fallback.js .
+
+      - name: Upload preview artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: clawless-preview
+          path: dist/
+
+      - name: Export system prompt
+        run: npx @open-gitagent/gitagent export -f system-prompt > system-prompt.txt
+
+      - name: Upload system prompt
+        uses: actions/upload-artifact@v4
+        with:
+          name: system-prompt
+          path: system-prompt.txt

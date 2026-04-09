@@ -1,0 +1,18 @@
+name: clawless-optimize
+description: "Rewrite Node.js-incompatible API calls to WebContainer-safe equivalents in a gitagent repository"
+input_schema:
+  type: object
+  properties:
+    repo_path:
+      type: string
+      description: "Path to the gitagent repository to optimize"
+    dry_run:
+      type: boolean
+      default: false
+      description: "If true, report what would change without modifying files"
+  required:
+    - repo_path
+implementation:
+  type: script
+  path: skills/webcontainer-optimizer/optimize.js
+  runtime: node

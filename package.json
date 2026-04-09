@@ -1,0 +1,35 @@
+{
+  "name": "clawless-deployer",
+  "version": "1.0.0",
+  "description": "The first gitagent built natively for ClawLess — optimizes, validates, and deploys agents to the browser-based WebContainer runtime",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "validate": "npx @open-gitagent/gitagent validate",
+    "info": "npx @open-gitagent/gitagent info",
+    "export": "npx @open-gitagent/gitagent export -f system-prompt",
+    "analyze": "node skills/bundle-analyzer/analyze.js .",
+    "analyze:json": "node skills/bundle-analyzer/analyze.js . --json",
+    "optimize": "node skills/webcontainer-optimizer/optimize.js . --dry-run",
+    "optimize:apply": "node skills/webcontainer-optimizer/optimize.js .",
+    "preview": "node skills/live-preview-builder/build-preview.js .",
+    "offline": "node skills/offline-fallback/build-fallback.js .",
+    "serve": "npx serve dist/clawless-preview --cors -l 3000",
+    "build": "npm run preview && npm run offline",
+    "ci": "npm run validate && npm run analyze:json"
+  },
+  "keywords": [
+    "gitagent",
+    "clawless",
+    "webcontainer",
+    "browser-runtime",
+    "zero-install",
+    "hackathon",
+    "ai-agent",
+    "deployment"
+  ],
+  "dependencies": {},
+  "devDependencies": {}
+}

@@ -1,0 +1,19 @@
+name: clawless-scan
+description: "Scan an agent repository for ClawLess WebContainer compatibility and return a structured report"
+input_schema:
+  type: object
+  properties:
+    repo_path:
+      type: string
+      description: "Path to the gitagent repository to scan"
+    format:
+      type: string
+      enum: [json, markdown]
+      default: markdown
+      description: "Output format for the compatibility report"
+  required:
+    - repo_path
+implementation:
+  type: script
+  path: skills/bundle-analyzer/analyze.js
+  runtime: node

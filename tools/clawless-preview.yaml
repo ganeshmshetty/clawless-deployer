@@ -1,0 +1,17 @@
+name: clawless-preview
+description: "Build a shareable browser-based preview of a gitagent for the ClawLess WebContainer runtime"
+input_schema:
+  type: object
+  properties:
+    repo_path:
+      type: string
+      description: "Path to the gitagent repository to package"
+    repo_url:
+      type: string
+      description: "GitHub repository URL for generating a play.clawless.io link"
+  required:
+    - repo_path
+implementation:
+  type: script
+  path: skills/live-preview-builder/build-preview.js
+  runtime: node
