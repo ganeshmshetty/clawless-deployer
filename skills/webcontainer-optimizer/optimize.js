@@ -16,7 +16,7 @@
 const fs = require('fs');
 const path = require('path');
 
-// ── Configuration ───────────────────────────────────────────
+// ââ Configuration âââââââââââââââââââââââââââââââââââââââââââ
 
 const INCOMPATIBLE_APIS = [
   {
@@ -72,32 +72,32 @@ const INCOMPATIBLE_APIS = [
 const REWRITE_RULES = [
   {
     find: /require\s*\(\s*['"]child_process['"]\s*\)/g,
-    replace: "/* clawless: child_process removed — use webcontainerInstance.spawn() */",
+    replace: "/* clawless: child_process removed â use webcontainerInstance.spawn() */",
     note: 'Removed child_process require; use WebContainer spawn API',
   },
   {
     find: /child_process\.exec\s*\(\s*(.+?)\s*(?:,|\))/g,
     replaceFn: (match, cmd) =>
       `/* clawless-rewrite */ await webcontainerInstance.spawn(${cmd}.split(' ')[0], ${cmd}.split(' ').slice(1))`,
-    note: 'Rewrote child_process.exec → webcontainerInstance.spawn',
+    note: 'Rewrote child_process.exec â webcontainerInstance.spawn',
   },
   {
     find: /child_process\.spawn\s*\(\s*(.+?)\s*,\s*(.+?)\s*\)/g,
     replaceFn: (match, bin, args) =>
       `/* clawless-rewrite */ await webcontainerInstance.spawn(${bin}, ${args})`,
-    note: 'Rewrote child_process.spawn → webcontainerInstance.spawn',
+    note: 'Rewrote child_process.spawn â webcontainerInstance.spawn',
   },
   {
     find: /fs\.writeFileSync\s*\(\s*(.+?)\s*,\s*(.+?)\s*\)/g,
     replaceFn: (match, filePath, data) =>
       `/* clawless-rewrite */ await webcontainerInstance.fs.writeFile(${filePath}, ${data})`,
-    note: 'Rewrote fs.writeFileSync → webcontainerInstance.fs.writeFile',
+    note: 'Rewrote fs.writeFileSync â webcontainerInstance.fs.writeFile',
   },
   {
     find: /fs\.readFileSync\s*\(\s*(.+?)\s*,\s*(.+?)\s*\)/g,
     replaceFn: (match, filePath, enc) =>
       `/* clawless-rewrite */ await webcontainerInstance.fs.readFile(${filePath}, ${enc})`,
-    note: 'Rewrote fs.readFileSync → webcontainerInstance.fs.readFile',
+    note: 'Rewrote fs.readFileSync â webcontainerInstance.fs.readFile',
   },
   {
     find: /fs\.mkdirSync\s*\(\s*(.+?)\s*(?:,\s*(.+?))?\s*\)/g,
@@ -105,7 +105,7 @@ const REWRITE_RULES = [
       opts
         ? `/* clawless-rewrite */ await webcontainerInstance.fs.mkdir(${dirPath}, ${opts})`
         : `/* clawless-rewrite */ await webcontainerInstance.fs.mkdir(${dirPath})`,
-    note: 'Rewrote fs.mkdirSync → webcontainerInstance.fs.mkdir',
+    note: 'Rewrote fs.mkdirSync â webcontainerInstance.fs.mkdir',
   },
 ];
 
@@ -123,7 +123,7 @@ const BLOCKED_PACKAGES = new Map([
 
 const SCAN_EXTENSIONS = new Set(['.js', '.ts', '.mjs', '.cjs', '.jsx', '.tsx']);
 
-// ── Helpers ─────────────────────────────────────────────────
+// ââ Helpers âââââââââââââââââââââââââââââââââââââââââââââââââ
 
 function walkDir(dir, fileList = []) {
   const entries = fs.readdirSync(dir, { withFileTypes: true });
@@ -154,7 +154,7 @@ function backupFile(filePath, repoPath, backupDir) {
   fs.copyFileSync(filePath, backupPath);
 }
 
-// ── Scan Phase ──────────────────────────────────────────────
+// ââ Scan Phase ââââââââââââââââââââââââââââââââââââââââââââââ
 
 function scanFile(filePath, repoPath) {
   const content = fs.readFileSync(filePath, 'utf8');
@@ -213,7 +213,7 @@ function scanDependencies(repoPath) {
   return { found: true, dependencies: depNames, blocked };
 }
 
-// ── Rewrite Phase ───────────────────────────────────────────
+// ââ Rewrite Phase âââââââââââââââââââââââââââââââââââââââââââ
 
 function rewriteFile(filePath, repoPath, backupDir, dryRun) {
   let content = fs.readFileSync(filePath, 'utf8');
@@ -246,7 +246,7 @@ function rewriteFile(filePath, repoPath, backupDir, dryRun) {
   return rewrites;
 }
 
-// ── Main ────────────────────────────────────────────────────
+// ââ Main ââââââââââââââââââââââââââââââââââââââââââââââââââââ
 
 function main() {
   const args = process.argv.slice(2);

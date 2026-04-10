@@ -9,13 +9,13 @@
  * Usage:
  *   node analyze.js <repo-path> [--json] [--policy <policy.yaml>]
  *
- * This skill is READ-ONLY — it never modifies any files.
+ * This skill is READ-ONLY â it never modifies any files.
  */
 
 const fs = require('fs');
 const path = require('path');
 
-// ── Configuration ───────────────────────────────────────────
+// ââ Configuration âââââââââââââââââââââââââââââââââââââââââââ
 
 const INCOMPATIBLE_PATTERNS = {
   python: {
@@ -54,7 +54,7 @@ const DEFAULT_LIMITS = {
 
 const SCAN_EXTENSIONS = new Set(['.js', '.ts', '.mjs', '.cjs', '.jsx', '.tsx']);
 
-// ── Helpers ─────────────────────────────────────────────────
+// ââ Helpers âââââââââââââââââââââââââââââââââââââââââââââââââ
 
 function walkDir(dir, opts = {}) {
   const results = [];
@@ -85,7 +85,7 @@ function parseYamlFrontmatter(content) {
 }
 
 function parseSimpleYaml(content) {
-  // Minimal YAML parser for agent.yaml — handles flat keys and simple lists
+  // Minimal YAML parser for agent.yaml â handles flat keys and simple lists
   const result = {};
   const lines = content.split('\n');
   let currentKey = null;
@@ -129,7 +129,7 @@ function getFileSizeRecursive(dir) {
   return total;
 }
 
-// ── Analysis Functions ──────────────────────────────────────
+// ââ Analysis Functions ââââââââââââââââââââââââââââââââââââââ
 
 function analyzeSkill(skillDir, repoPath) {
   const skillMdPath = path.join(skillDir, 'SKILL.md');
@@ -232,16 +232,16 @@ function estimateResources(repoPath, limits) {
 
   return {
     totalSize: { value: `${totalSizeMB} MB`, limit: `${limitMB} MB`, ok: totalSize < limits.maxFileSize },
-    dependencies: { value: depCount, limit: '—', ok: depCount < 50 },
+    dependencies: { value: depCount, limit: 'â', ok: depCount < 50 },
     processesNeeded: { value: Math.min(skillCount + 2, limits.maxProcesses), limit: limits.maxProcesses, ok: skillCount + 2 <= limits.maxProcesses },
   };
 }
 
-// ── Report Generation ───────────────────────────────────────
+// ââ Report Generation âââââââââââââââââââââââââââââââââââââââ
 
 function generateMarkdownReport(agentInfo, skillResults, toolResults, resources, verdict) {
-  const statusIcon = (s) => (s === 'COMPATIBLE' ? '✅' : s === 'NEEDS_REWRITE' ? '⚠️' : s === 'WARN' ? '⚠️' : '❌');
-  const resourceIcon = (ok) => (ok ? '✅' : '⚠️');
+  const statusIcon = (s) => (s === 'COMPATIBLE' ? 'â' : s === 'NEEDS_REWRITE' ? 'â ï¸' : s === 'WARN' ? 'â ï¸' : 'â');
+  const resourceIcon = (ok) => (ok ? 'â' : 'â ï¸');
 
   let md = `# ClawLess Compatibility Report\n\n`;
   md += `## Agent: ${agentInfo.name} v${agentInfo.version}\n\n`;
@@ -278,7 +278,7 @@ function generateMarkdownReport(agentInfo, skillResults, toolResults, resources,
   // Recommendation
   md += `\n## Recommendation\n`;
   if (verdict === 'READY') {
-    md += `- **Deploy to: ClawLess** ✅\n`;
+    md += `- **Deploy to: ClawLess** â\n`;
     md += `- This agent is fully compatible with the browser-based WebContainer runtime.\n`;
   } else if (verdict === 'NEEDS_WORK') {
     md += `- **Deploy to: ClawLess** (after fixes)\n`;
@@ -293,7 +293,7 @@ function generateMarkdownReport(agentInfo, skillResults, toolResults, resources,
   return md;
 }
 
-// ── Main ────────────────────────────────────────────────────
+// ââ Main ââââââââââââââââââââââââââââââââââââââââââââââââââââ
 
 function main() {
   const args = process.argv.slice(2);
@@ -310,7 +310,7 @@ function main() {
   // Parse agent.yaml
   const agentYamlPath = path.join(resolvedPath, 'agent.yaml');
   if (!fs.existsSync(agentYamlPath)) {
-    console.error('Error: agent.yaml not found — is this a gitagent repository?');
+    console.error('Error: agent.yaml not found â is this a gitagent repository?');
     process.exit(1);
   }
 
