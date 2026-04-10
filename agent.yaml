@@ -7,6 +7,9 @@ model:
   fallback:
     - anthropic:claude-sonnet-4-5-20250929
     - openai:gpt-4o
+runtime:
+  name: node
+  version: ">=18"
 skills:
   - webcontainer-optimizer
   - bundle-analyzer
