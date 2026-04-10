@@ -1,4 +1,4 @@
-# â¡ clawless-deployer
+# Ã¢ÂÂ¡ clawless-deployer
 
 > A gitagent built for the ClawLess browser runtime.
 
@@ -13,11 +13,11 @@ Zero servers. Zero Docker. Zero install. Run any gitagent in a browser tab.
 
 ## The Problem
 
-ClawLess is the most accessible deployment path for gitagents â a full Node.js runtime running entirely in the browser via WebContainers. But it has constraints:
+ClawLess is the most accessible deployment path for gitagents Ã¢ÂÂ a full Node.js runtime running entirely in the browser via WebContainers. But it has constraints:
 
-- **No `child_process`** â use `webcontainerInstance.spawn()` instead
-- **No sync `fs` at runtime** â use `webcontainerInstance.fs.*` async APIs
-- **No Python, no native binaries** â Node.js/npm only
+- **No `child_process`** Ã¢ÂÂ use `webcontainerInstance.spawn()` instead
+- **No sync `fs` at runtime** Ã¢ÂÂ use `webcontainerInstance.fs.*` async APIs
+- **No Python, no native binaries** Ã¢ÂÂ Node.js/npm only
 
 No existing agent (or tooling) helps you bridge this gap. This agent does.
 
@@ -26,15 +26,15 @@ No existing agent (or tooling) helps you bridge this gap. This agent does.
 ## What clawless-deployer Does
 
 ```
-Any gitagent repo â clawless-deployer â Runs in your browser tab
+Any gitagent repo Ã¢ÂÂ clawless-deployer Ã¢ÂÂ Runs in your browser tab
 ```
 
 Four skills, one pipeline:
 
 | Skill | What it does |
 |-------|-------------|
-| **`bundle-analyzer`** | Scans every skill & tool â tells you exactly which are ClawLess-ready vs which need gitclaw |
-| **`webcontainer-optimizer`** | Rewrites `child_process` â `webcontainerInstance.spawn()`, sync `fs` â async VFS APIs |
+| **`bundle-analyzer`** | Scans every skill & tool Ã¢ÂÂ tells you exactly which are ClawLess-ready vs which need gitclaw |
+| **`webcontainer-optimizer`** | Rewrites `child_process` Ã¢ÂÂ `webcontainerInstance.spawn()`, sync `fs` Ã¢ÂÂ async VFS APIs |
 | **`live-preview-builder`** | Packages the agent into a self-contained `index.html` you can open in any browser |
 | **`offline-fallback`** | Generates a service worker + cached response engine for disconnected environments |
 
@@ -47,7 +47,7 @@ Four skills, one pipeline:
 git clone https://github.com/your-username/gitagent-hackathon
 cd gitagent-hackathon
 
-# No npm install needed â pure Node.js built-ins only
+# No npm install needed Ã¢ÂÂ pure Node.js built-ins only
 
 # 1. Scan any agent for ClawLess compatibility
 node skills/bundle-analyzer/analyze.js /path/to/your-agent
@@ -91,9 +91,9 @@ Produces a compatibility matrix like this:
 
 | Skill           | Status         | Issues               | Fix Effort |
 |-----------------|----------------|----------------------|------------|
-| code-review     | â COMPATIBLE  | none                 | none       |
-| data-pipeline   | â ï¸ NEEDS_REWRITE | sync fs (3)         | medium     |
-| ml-inference    | â INCOMPATIBLE | requires Python      | n/a        |
+| code-review     | Ã¢ÂÂ COMPATIBLE  | none                 | none       |
+| data-pipeline   | Ã¢ÂÂ Ã¯Â¸Â NEEDS_REWRITE | sync fs (3)         | medium     |
+| ml-inference    | Ã¢ÂÂ INCOMPATIBLE | requires Python      | n/a        |
 ```
 
 **Usage:** `node skills/bundle-analyzer/analyze.js <repo> [--json]`
@@ -109,9 +109,9 @@ Detects and rewrites 9 incompatible API patterns:
 | `fs.readFileSync(path, enc)` | `await webcontainerInstance.fs.readFile(path, enc)` |
 | `fs.mkdirSync(path, opts)` | `await webcontainerInstance.fs.mkdir(path, opts)` |
 
-Also flags blocked packages with replacements: `sharp` â `@napi-rs/image`, `sqlite3` â `sql.js`, `bcrypt` â `bcryptjs`.
+Also flags blocked packages with replacements: `sharp` Ã¢ÂÂ `@napi-rs/image`, `sqlite3` Ã¢ÂÂ `sql.js`, `bcrypt` Ã¢ÂÂ `bcryptjs`.
 
-Creates `.clawless-backup/` before any rewrite â fully reversible.
+Creates `.clawless-backup/` before any rewrite Ã¢ÂÂ fully reversible.
 
 **Usage:** `node skills/webcontainer-optimizer/optimize.js <repo> [--dry-run]`
 
@@ -121,13 +121,13 @@ Packages the agent into:
 
 ```
 dist/clawless-preview/
-âââ index.html        # Self-contained browser app (no bundler needed)
-âââ agent-bundle.js   # Agent repo as a WebContainer FileSystemTree
-âââ policy.yaml       # Restrictive security policy
-âââ README.md         # Serving instructions
+Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ index.html        # Self-contained browser app (no bundler needed)
+Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ agent-bundle.js   # Agent repo as a WebContainer FileSystemTree
+Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ policy.yaml       # Restrictive security policy
+Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ README.md         # Serving instructions
 ```
 
-The preview prompts for your API key at runtime â **never hardcodes credentials**.
+The preview prompts for your API key at runtime Ã¢ÂÂ **never hardcodes credentials**.
 Supports Anthropic, OpenAI, and Google providers.
 
 **Usage:** `node skills/live-preview-builder/build-preview.js <repo> [--repo-url <github-url>]`
@@ -136,10 +136,10 @@ Supports Anthropic, OpenAI, and Google providers.
 
 Generates a 3-layer resilience stack:
 
-1. **`agent-profile.json`** â compiled identity from SOUL.md, RULES.md, skill descriptions
-2. **`response-cache.json`** â keyword-indexed cache using TF-IDF-style scoring
-3. **`sw.js`** â service worker that intercepts requests when offline and routes to cache
-4. **`offline.html`** â minimal chat UI that works without WebContainer
+1. **`agent-profile.json`** Ã¢ÂÂ compiled identity from SOUL.md, RULES.md, skill descriptions
+2. **`response-cache.json`** Ã¢ÂÂ keyword-indexed cache using TF-IDF-style scoring
+3. **`sw.js`** Ã¢ÂÂ service worker that intercepts requests when offline and routes to cache
+4. **`offline.html`** Ã¢ÂÂ minimal chat UI that works without WebContainer
 
 Total bundle: ~21 KB (well under the 2 MB limit).
 
@@ -149,15 +149,15 @@ Total bundle: ~21 KB (well under the 2 MB limit).
 
 ## Why ClawLess
 
-ClawLess is the most accessible deployment path for gitagents â no infrastructure, no signup, just a browser tab. This agent helps you actually get there by handling the WebContainer-specific constraints that trip up most agent code.
+ClawLess is the most accessible deployment path for gitagents Ã¢ÂÂ no infrastructure, no signup, just a browser tab. This agent helps you actually get there by handling the WebContainer-specific constraints that trip up most agent code.
 
 ---
 
-## ð  Known Issues & Workarounds (ClawLess Runtime)
+## Ã°ÂÂÂ  Known Issues & Workarounds (ClawLess Runtime)
 
 **Terminal Key Doubling**: Some browsers may experience multiple character echoes in the `play.clawless.io` terminal.
 - **Workaround**: Copy and **Paste** your prompts instead of typing them manually.
-- **Pro Fix**: Run `npm run preview` and use the generated `index.html` via the ð Preview button for a clean UI.
+- **Pro Fix**: Run `npm run preview` and use the generated `index.html` via the Ã°ÂÂÂ Preview button for a clean UI.
 
 ---
 
@@ -176,7 +176,7 @@ skills:
   - offline-fallback
 ```
 
-Full identity: [SOUL.md](SOUL.md) Â· Rules: [RULES.md](RULES.md)
+Full identity: [SOUL.md](SOUL.md) ÃÂ· Rules: [RULES.md](RULES.md)
 
 ---
 
@@ -184,27 +184,27 @@ Full identity: [SOUL.md](SOUL.md) Â· Rules: [RULES.md](RULES.md)
 
 ```bash
 npx @open-gitagent/gitagent validate
-# â agent.yaml â valid
-# â SOUL.md â valid
-# â tools/clawless-offline.yaml â valid
-# â tools/clawless-optimize.yaml â valid
-# â tools/clawless-preview.yaml â valid
-# â tools/clawless-scan.yaml â valid
-# â skills/ â valid
-# â Validation passed (0 warnings)
+# Ã¢ÂÂ agent.yaml Ã¢ÂÂ valid
+# Ã¢ÂÂ SOUL.md Ã¢ÂÂ valid
+# Ã¢ÂÂ tools/clawless-offline.yaml Ã¢ÂÂ valid
+# Ã¢ÂÂ tools/clawless-optimize.yaml Ã¢ÂÂ valid
+# Ã¢ÂÂ tools/clawless-preview.yaml Ã¢ÂÂ valid
+# Ã¢ÂÂ tools/clawless-scan.yaml Ã¢ÂÂ valid
+# Ã¢ÂÂ skills/ Ã¢ÂÂ valid
+# Ã¢ÂÂ Validation passed (0 warnings)
 ```
 
 ---
 
 ## Built With
 
-- [GitAgent Standard](https://gitagent.sh) â agent definition format
-- [ClawLess](https://github.com/open-gitagent/clawless) â browser runtime
-- [WebContainers API](https://webcontainers.io) â Node.js in the browser
-- Pure Node.js built-ins â zero runtime dependencies
+- [GitAgent Standard](https://gitagent.sh) Ã¢ÂÂ agent definition format
+- [ClawLess](https://github.com/open-gitagent/clawless) Ã¢ÂÂ browser runtime
+- [WebContainers API](https://webcontainers.io) Ã¢ÂÂ Node.js in the browser
+- Pure Node.js built-ins Ã¢ÂÂ zero runtime dependencies
 
 ---
 
 ## License
 
-MIT Â© 2026
+MIT ÃÂ© 2026

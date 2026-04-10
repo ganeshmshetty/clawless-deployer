@@ -12,7 +12,7 @@ metadata:
 # Live Preview Builder
 
 ## Purpose
-Generate a self-contained, shareable ClawLess deployment package that lets anyone run the agent in their browser with a single click â no install, no backend, no configuration.
+Generate a self-contained, shareable ClawLess deployment package that lets anyone run the agent in their browser with a single click Ã¢ÂÂ no install, no backend, no configuration.
 
 ## Inputs
 - Path to a ClawLess-compatible agent repository (run `bundle-analyzer` first if unsure)
@@ -100,10 +100,10 @@ Generate a self-contained, shareable ClawLess deployment package that lets anyon
 
 ### Step 5: Output Deployment Package
 1. Write the preview files to `dist/clawless-preview/`:
-   - `index.html` â the self-contained preview page
-   - `agent-bundle.js` â the FileSystemTree as a JS module
-   - `policy.yaml` â the embedded policy
-   - `README.md` â instructions for serving locally or deploying
+   - `index.html` Ã¢ÂÂ the self-contained preview page
+   - `agent-bundle.js` Ã¢ÂÂ the FileSystemTree as a JS module
+   - `policy.yaml` Ã¢ÂÂ the embedded policy
+   - `README.md` Ã¢ÂÂ instructions for serving locally or deploying
 2. If a GitHub URL is provided, generate a `play.clawless.io` compatible URL:
    ```
    https://play.clawless.io/?repo=https://github.com/{owner}/{repo}
@@ -114,9 +114,9 @@ Generate a self-contained, shareable ClawLess deployment package that lets anyon
 # Preview Build Complete
 
 ## Files Generated
-- `dist/clawless-preview/index.html` â Open in browser to run
-- `dist/clawless-preview/agent-bundle.js` â Agent filesystem tree
-- `dist/clawless-preview/policy.yaml` â Security policy
+- `dist/clawless-preview/index.html` Ã¢ÂÂ Open in browser to run
+- `dist/clawless-preview/agent-bundle.js` Ã¢ÂÂ Agent filesystem tree
+- `dist/clawless-preview/policy.yaml` Ã¢ÂÂ Security policy
 
 ## How to Run
 1. Serve with COOP/COEP headers:
@@ -137,7 +137,7 @@ Generate a self-contained, shareable ClawLess deployment package that lets anyon
 ```
 
 ## Guardrails
-- Never embed API keys in the generated HTML or bundle â always prompt at runtime.
+- Never embed API keys in the generated HTML or bundle Ã¢ÂÂ always prompt at runtime.
 - Validate that COOP/COEP headers are set (required for `SharedArrayBuffer`).
 - Keep the generated HTML under 500KB (excluding the agent bundle).
 - Test that the FileSystemTree mounts correctly before declaring success.

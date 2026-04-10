@@ -31,28 +31,28 @@ Strip Node.js-incompatible dependencies and rewrite tool calls to browser-safe A
 1. Scan all `.js`, `.ts`, `.mjs`, `.cjs` files for:
    - `require('child_process')` or `import ... from 'child_process'`
    - `require('fs')` synchronous methods: `writeFileSync`, `readFileSync`, `mkdirSync`, `rmdirSync`, `unlinkSync`
-   - `require('net')`, `require('dgram')` â raw socket access
-   - `require('worker_threads')` â limited support in WebContainers
-   - `process.exit()` â kills the WebContainer process
+   - `require('net')`, `require('dgram')` Ã¢ÂÂ raw socket access
+   - `require('worker_threads')` Ã¢ÂÂ limited support in WebContainers
+   - `process.exit()` Ã¢ÂÂ kills the WebContainer process
 2. For each match, record file, line number, and surrounding context.
 
 ### Phase 3: Rewrite
-1. Replace `child_process.exec(cmd)` â `webcontainerInstance.spawn(cmd.split(' ')[0], cmd.split(' ').slice(1))`
-2. Replace `child_process.spawn(bin, args)` â `webcontainerInstance.spawn(bin, args)`
-3. Replace `fs.writeFileSync(path, data)` â `await webcontainerInstance.fs.writeFile(path, data)`
-4. Replace `fs.readFileSync(path, enc)` â `await webcontainerInstance.fs.readFile(path, enc)`
-5. Replace `fs.mkdirSync(path, opts)` â `await webcontainerInstance.fs.mkdir(path, opts)`
+1. Replace `child_process.exec(cmd)` Ã¢ÂÂ `webcontainerInstance.spawn(cmd.split(' ')[0], cmd.split(' ').slice(1))`
+2. Replace `child_process.spawn(bin, args)` Ã¢ÂÂ `webcontainerInstance.spawn(bin, args)`
+3. Replace `fs.writeFileSync(path, data)` Ã¢ÂÂ `await webcontainerInstance.fs.writeFile(path, data)`
+4. Replace `fs.readFileSync(path, enc)` Ã¢ÂÂ `await webcontainerInstance.fs.readFile(path, enc)`
+5. Replace `fs.mkdirSync(path, opts)` Ã¢ÂÂ `await webcontainerInstance.fs.mkdir(path, opts)`
 6. Replace synchronous `require('fs')` patterns with async WebContainer `fs` equivalents.
 7. Wrap any newly async calls in `async` functions if the parent function isn't already async.
 
 ### Phase 4: Dependency Replacement
 For packages flagged as `BLOCK`, suggest or apply known replacements:
-- `sharp` â `@napi-rs/image` (WASM build) or remove image processing
-- `sqlite3` â `sql.js` (WASM-based SQLite)
-- `bcrypt` â `bcryptjs` (pure JS)
-- `canvas` â `@napi-rs/canvas` or remove
-- `puppeteer` â remove (no browser-in-browser)
-- Native `http` server â use WebContainer's built-in server support
+- `sharp` Ã¢ÂÂ `@napi-rs/image` (WASM build) or remove image processing
+- `sqlite3` Ã¢ÂÂ `sql.js` (WASM-based SQLite)
+- `bcrypt` Ã¢ÂÂ `bcryptjs` (pure JS)
+- `canvas` Ã¢ÂÂ `@napi-rs/canvas` or remove
+- `puppeteer` Ã¢ÂÂ remove (no browser-in-browser)
+- Native `http` server Ã¢ÂÂ use WebContainer's built-in server support
 
 ## Output Format
 ```markdown
@@ -81,6 +81,6 @@ For packages flagged as `BLOCK`, suggest or apply known replacements:
 
 ## Guardrails
 - Never delete files; create `.clawless-backup/` copies before rewriting.
-- If a rewrite changes function signatures (sync â async), flag all callers for review.
+- If a rewrite changes function signatures (sync Ã¢ÂÂ async), flag all callers for review.
 - Do not rewrite test files unless explicitly asked.
 - Preserve all comments and docstrings in rewritten files.

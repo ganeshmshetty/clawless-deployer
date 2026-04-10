@@ -1,7 +1,7 @@
 {
   "name": "clawless-deployer",
   "version": "1.0.0",
-  "description": "A gitagent built for ClawLess â optimizes, validates, and deploys agents to the browser-based WebContainer runtime",
+  "description": "A gitagent built for ClawLess Ã¢ÂÂ optimizes, validates, and deploys agents to the browser-based WebContainer runtime",
   "license": "MIT",
   "engines": {
     "node": ">=18.0.0"

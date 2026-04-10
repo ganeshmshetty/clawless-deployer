@@ -39,7 +39,7 @@ Create a static fallback version of the agent that works without an active WebCo
 
 ### Step 2: Build Response Cache
 1. If conversation logs are provided:
-   - Parse logs into promptâresponse pairs.
+   - Parse logs into promptÃ¢ÂÂresponse pairs.
    - Deduplicate and normalize prompts.
    - Index by keyword similarity for fuzzy matching.
 2. If common prompts are provided:
@@ -81,11 +81,11 @@ Create a static fallback version of the agent that works without an active WebCo
 
 ### Step 5: Package Fallback Bundle
 1. Create `dist/offline-fallback/`:
-   - `offline-agent.js` â the lightweight conversation engine
-   - `agent-profile.json` â compiled agent identity
-   - `response-cache.json` â indexed cached responses
-   - `sw.js` â service worker for offline support
-   - `offline.html` â standalone offline UI
+   - `offline-agent.js` Ã¢ÂÂ the lightweight conversation engine
+   - `agent-profile.json` Ã¢ÂÂ compiled agent identity
+   - `response-cache.json` Ã¢ÂÂ indexed cached responses
+   - `sw.js` Ã¢ÂÂ service worker for offline support
+   - `offline.html` Ã¢ÂÂ standalone offline UI
 2. Measure total bundle size; warn if exceeding the limit.
 
 ## Output Format
@@ -119,5 +119,5 @@ Create a static fallback version of the agent that works without an active WebCo
 - Never include API keys or secrets in the offline bundle.
 - Offline responses must clearly state they are cached/approximate.
 - Keep the total bundle under the specified size limit.
-- The offline engine must not attempt network requests â fail gracefully.
+- The offline engine must not attempt network requests Ã¢ÂÂ fail gracefully.
 - Preserve the agent's personality (SOUL.md) in all offline responses.

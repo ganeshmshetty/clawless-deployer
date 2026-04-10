@@ -30,12 +30,12 @@ Report which skills in a gitagent repository are ClawLess-compatible and which r
 For each skill directory:
 1. Read `SKILL.md` frontmatter for `allowed-tools`.
 2. Scan all implementation files (`.js`, `.ts`, `.sh`, `.py`) for:
-   - **Language check**: `.py` files â `INCOMPATIBLE` (no Python in WebContainer)
-   - **Shell scripts**: `.sh` files â `WARN` (may work if only using Node-available commands)
-   - **Binary dependencies**: any `require()` of native modules â `INCOMPATIBLE`
-   - **Sync I/O**: synchronous `fs` calls â `NEEDS_REWRITE`
-   - **Process spawning**: `child_process` usage â `NEEDS_REWRITE`
-   - **Network**: raw `net`/`dgram` sockets â `INCOMPATIBLE`
+   - **Language check**: `.py` files Ã¢ÂÂ `INCOMPATIBLE` (no Python in WebContainer)
+   - **Shell scripts**: `.sh` files Ã¢ÂÂ `WARN` (may work if only using Node-available commands)
+   - **Binary dependencies**: any `require()` of native modules Ã¢ÂÂ `INCOMPATIBLE`
+   - **Sync I/O**: synchronous `fs` calls Ã¢ÂÂ `NEEDS_REWRITE`
+   - **Process spawning**: `child_process` usage Ã¢ÂÂ `NEEDS_REWRITE`
+   - **Network**: raw `net`/`dgram` sockets Ã¢ÂÂ `INCOMPATIBLE`
 3. Calculate compatibility score: `COMPATIBLE` (100%), `NEEDS_REWRITE` (fixable), `INCOMPATIBLE` (requires gitclaw).
 
 ### Step 3: Tool Compatibility Check
@@ -66,19 +66,19 @@ For each tool YAML:
 ## Skill Matrix
 | Skill | Status | Issues | Fix Effort |
 |-------|--------|--------|------------|
-| ...   | â/â ï¸/â | ...  | low/med/high |
+| ...   | Ã¢ÂÂ/Ã¢ÂÂ Ã¯Â¸Â/Ã¢ÂÂ | ...  | low/med/high |
 
 ## Tool Matrix
 | Tool | Status | Issues |
 |------|--------|--------|
-| ...  | â/â  | ...    |
+| ...  | Ã¢ÂÂ/Ã¢ÂÂ  | ...    |
 
 ## Resource Budget
 | Resource | Used | Limit | Status |
 |----------|------|-------|--------|
-| Total size | X MB | 10 MB | â/â ï¸ |
-| Dependencies | N | â | â/â ï¸ |
-| Processes needed | N | 10 | â/â ï¸ |
+| Total size | X MB | 10 MB | Ã¢ÂÂ/Ã¢ÂÂ Ã¯Â¸Â |
+| Dependencies | N | Ã¢ÂÂ | Ã¢ÂÂ/Ã¢ÂÂ Ã¯Â¸Â |
+| Processes needed | N | 10 | Ã¢ÂÂ/Ã¢ÂÂ Ã¯Â¸Â |
 
 ## Migration Path
 1. Step-by-step instructions to reach READY status
@@ -90,6 +90,6 @@ For each tool YAML:
 ```
 
 ## Guardrails
-- This skill is read-only â it never modifies any files.
+- This skill is read-only Ã¢ÂÂ it never modifies any files.
 - Report all findings even if the overall verdict is COMPATIBLE.
 - For hybrid agents (some skills work, some don't), recommend skill-level split.

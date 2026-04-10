@@ -15,14 +15,14 @@
 const fs = require('fs');
 const path = require('path');
 
-// ââ Configuration âââââââââââââââââââââââââââââââââââââââââââ
+// Ã¢ÂÂÃ¢ÂÂ Configuration Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 
 const EXCLUDE_DIRS = new Set(['node_modules', '.git', '.clawless-backup', 'dist', '.gitagent']);
 const EXCLUDE_FILES = new Set(['.env', '.env.local', '.env.production']);
 const MAX_FILE_SIZE = 1024 * 1024; // 1MB per file (skip larger)
 const BINARY_EXTENSIONS = new Set(['.png', '.jpg', '.jpeg', '.gif', '.ico', '.woff', '.woff2', '.ttf', '.eot']);
 
-// ââ Helpers âââââââââââââââââââââââââââââââââââââââââââââââââ
+// Ã¢ÂÂÃ¢ÂÂ Helpers Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 
 function walkDir(dir, basePath, tree = {}) {
   const entries = fs.readdirSync(dir, { withFileTypes: true });
@@ -56,7 +56,7 @@ function walkDir(dir, basePath, tree = {}) {
   return tree;
 }
 
-// ââ HTML Template âââââââââââââââââââââââââââââââââââââââââââ
+// Ã¢ÂÂÃ¢ÂÂ HTML Template Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 
 function generatePreviewHTML(agentName, agentVersion) {
   return `<!DOCTYPE html>
@@ -64,7 +64,7 @@ function generatePreviewHTML(agentName, agentVersion) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${agentName} â ClawLess Preview</title>
+  <title>${agentName} Ã¢ÂÂ ClawLess Preview</title>
   <meta name="description" content="Live browser-based preview of ${agentName} v${agentVersion} powered by ClawLess WebContainer runtime">
   <style>
     :root {
@@ -268,7 +268,7 @@ function generatePreviewHTML(agentName, agentVersion) {
 <body>
   <header>
     <div class="logo">
-      <div class="logo-icon">â¡</div>
+      <div class="logo-icon">Ã¢ÂÂ¡</div>
       <h1>${agentName}</h1>
       <span class="version">v${agentVersion}</span>
     </div>
@@ -277,7 +277,7 @@ function generatePreviewHTML(agentName, agentVersion) {
 
   <main>
     <div class="setup-panel" id="setup-panel">
-      <h2>ð Configure API Key</h2>
+      <h2>Ã°ÂÂÂ Configure API Key</h2>
       <label for="api-key">Anthropic API Key (or set via provider below)</label>
       <input type="password" id="api-key" placeholder="sk-ant-..." autocomplete="off">
       <label for="provider-select">Provider</label>
@@ -286,7 +286,7 @@ function generatePreviewHTML(agentName, agentVersion) {
         <option value="openai">OpenAI (GPT-4o)</option>
         <option value="google">Google (Gemini)</option>
       </select>
-      <button id="run-btn" onclick="startAgent()">â¶ Run Agent</button>
+      <button id="run-btn" onclick="startAgent()">Ã¢ÂÂ¶ Run Agent</button>
     </div>
     <div id="terminal-container">
       <div id="terminal-output"></div>
@@ -295,7 +295,7 @@ function generatePreviewHTML(agentName, agentVersion) {
 
   <footer>
     Powered by <a href="https://github.com/open-gitagent/clawless" target="_blank">ClawLess</a>
-    Â· Built with <a href="https://gitagent.sh" target="_blank">GitAgent</a>
+    ÃÂ· Built with <a href="https://gitagent.sh" target="_blank">GitAgent</a>
   </footer>
 
   <script type="module">
@@ -395,7 +395,7 @@ function generatePreviewHTML(agentName, agentVersion) {
 </html>`;
 }
 
-// ââ Policy Template âââââââââââââââââââââââââââââââââââââââââ
+// Ã¢ÂÂÃ¢ÂÂ Policy Template Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 
 function generatePolicy() {
   return `version: "1"
@@ -434,10 +434,10 @@ limits:
 `;
 }
 
-// ââ README Template âââââââââââââââââââââââââââââââââââââââââ
+// Ã¢ÂÂÃ¢ÂÂ README Template Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 
 function generateReadme(agentName, agentVersion, repoUrl) {
-  let readme = `# ${agentName} â ClawLess Preview
+  let readme = `# ${agentName} Ã¢ÂÂ ClawLess Preview
 
 > Auto-generated by clawless-deployer live-preview-builder
 
@@ -477,7 +477,7 @@ https://play.clawless.io/?repo=${repoUrl}
   return readme;
 }
 
-// ââ Main ââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// Ã¢ÂÂÃ¢ÂÂ Main Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
 
 function main() {
   const args = process.argv.slice(2);
@@ -533,7 +533,7 @@ export default files;
   const bundleSize = (fs.statSync(path.join(outDir, 'agent-bundle.js')).size / 1024).toFixed(1);
 
   console.log('');
-  console.log('â Preview build complete!');
+  console.log('Ã¢ÂÂ Preview build complete!');
   console.log('');
   console.log('Files generated:');
   console.log(`  ${outDir}/index.html      (${htmlSize} KB)`);

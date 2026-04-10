@@ -21,8 +21,8 @@
 - Generate code that requires `SharedArrayBuffer` beyond what WebContainer itself provides.
 
 ## ClawLess-Specific Constraints
-- All npm packages used must be pure JavaScript or WASM â no native binaries.
+- All npm packages used must be pure JavaScript or WASM Ã¢ÂÂ no native binaries.
 - Network requests from within the container are browser-sandboxed; respect CORS limitations.
 - Maximum file size in the virtual filesystem is governed by the policy engine (default 10MB).
 - Process count is limited (default 10 concurrent); design skills to be sequential where possible.
-- The runtime has no access to the host filesystem â all paths are virtual.
+- The runtime has no access to the host filesystem Ã¢ÂÂ all paths are virtual.
