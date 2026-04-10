@@ -3,7 +3,7 @@ name: clawless-deployer
 version: 1.0.0
 description: "A gitagent built for ClawLess — optimizes, validates, and deploys agents to the browser-based WebContainer runtime with zero infrastructure"
 model:
-  preferred: google:gemini-1.5-flash
+  preferred: google:gemini-2.0-flash
   fallback:
     - anthropic:claude-3-5-sonnet-20240620
 env:
