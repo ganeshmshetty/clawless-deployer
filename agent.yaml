@@ -3,10 +3,13 @@ name: clawless-deployer
 version: 1.0.0
 description: "A gitagent built for ClawLess — optimizes, validates, and deploys agents to the browser-based WebContainer runtime with zero infrastructure"
 model:
-  preferred: google:gemini-2.5-pro
+  preferred: google:gemini-2.0-flash
   fallback:
     - anthropic:claude-sonnet-4-5-20250929
     - openai:gpt-4o
+env:
+  GOOGLE_API_KEY: ${GOOGLE_API_KEY:-$GEMINI_API_KEY}
+  GEMINI_API_KEY: ${GEMINI_API_KEY:-$GOOGLE_API_KEY}
 runtime:
   name: node
   version: ">=18"
