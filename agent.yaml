@@ -1,14 +1,11 @@
 spec_version: "0.1.0"
 name: clawless-deployer
 version: 1.0.0
-description: "A gitagent built for ClawLess â optimizes, validates, and deploys agents to the browser-based WebContainer runtime with zero infrastructure"
+description: "A gitagent built for ClawLess - optimizes, validates, and deploys agents to the browser-based WebContainer runtime"
 model:
   preferred: google:gemini-2.0-flash
   fallback:
     - anthropic:claude-3-5-sonnet-20240620
-env:
-  GOOGLE_AI_API_KEY: ${GOOGLE_AI_API_KEY}
-  GEMINI_API_KEY: ${GEMINI_API_KEY}
 runtime:
   name: node
 skills:
