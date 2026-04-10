@@ -153,6 +153,14 @@ ClawLess is the most accessible deployment path for gitagents — no infrastruct
 
 ---
 
+## 🛠 Known Issues & Workarounds (ClawLess Runtime)
+
+**Terminal Key Doubling**: Some browsers may experience multiple character echoes in the `play.clawless.io` terminal.
+- **Workaround**: Copy and **Paste** your prompts instead of typing them manually.
+- **Pro Fix**: Run `npm run preview` and use the generated `index.html` via the 🌐 Preview button for a clean UI.
+
+---
+
 ## Agent Identity
 
 ```yaml
