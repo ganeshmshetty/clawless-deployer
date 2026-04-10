@@ -5,7 +5,10 @@ description: "A gitagent built for ClawLess — optimizes, validates, and deploy
 model:
   preferred: google:gemini-1.5-flash
   fallback:
-    - anthropic:claude-sonnet-4-5-20250929
+    - anthropic:claude-3-5-sonnet-20240620
+env:
+  GOOGLE_AI_API_KEY: ${GOOGLE_AI_API_KEY}
+  GEMINI_API_KEY: ${GEMINI_API_KEY}
 runtime:
   name: node
 skills:
